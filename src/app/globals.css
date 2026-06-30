@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
+@theme {
+  --color-mos-bg: #f4f5f7;
+  --color-mos-panel: rgba(255, 255, 255, 0.75);
+  --color-mos-card: rgba(255, 255, 255, 0.85);
+  --color-mos-border: rgba(0, 0, 0, 0.06);
+  --color-mos-border-hover: rgba(0, 0, 0, 0.12);
+  
+  --color-mos-blue: #2563eb;
+  --color-mos-purple: #7c3aed;
+  --color-mos-amber: #d97706;
+  --color-mos-emerald: #059669;
+  --color-mos-coral: #e11d48;
+  
+  --font-outfit: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f4f5f7;
+  --foreground: #121217;
+  --mos-border: rgba(0, 0, 0, 0.06);
+  --mos-panel: rgba(255, 255, 255, 0.75);
+  --mos-card: rgba(255, 255, 255, 0.85);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: -0.015em;
 }
+
+/* Light Glass Prism Panel System */
+.mos-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 249, 250, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.65); /* Highlight edge glare */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mos-panel-hover:hover {
+  border-color: rgba(0, 0, 0, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 251, 252, 0.95) 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.12);
+}
+
+/* Minimalist Light Inputs */
+.mos-input {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  color: #121217;
+  font-size: 0.8125rem;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(4px);
+}
+
+.mos-input:focus {
+  border-color: rgba(37, 99, 235, 0.5);
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+}
+
+/* Save My Day Button - Light Theme */
+@keyframes coral-breath {
+  0%, 100% {
+    box-shadow: 
+      0 4px 16px rgba(225, 29, 72, 0.15), 
+      0 0 1px 1px rgba(225, 29, 72, 0.25),
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.5);
+    background-color: rgba(225, 29, 72, 0.85);
+  }
+  50% {
+    box-shadow: 
+      0 8px 26px rgba(225, 29, 72, 0.35), 
+      0 0 2px 2px rgba(225, 29, 72, 0.45),
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.6);
+    background-color: rgba(225, 29, 72, 0.95);
+  }
+}
+
+.btn-emergency-glass {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 6px;
+  border: 1px solid rgba(225, 29, 72, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  animation: coral-breath 3.5s ease-in-out infinite;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-emergency-glass:hover {
+  background-color: rgba(225, 29, 72, 0.95);
+  transform: scale(1.01) translateY(-0.5px);
+  cursor: pointer;
+}
+
+.btn-emergency-glass:active {
+  transform: scale(0.99) translateY(0.5px);
+  box-shadow: 
+    0 2px 8px rgba(225, 29, 72, 0.1), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.3), 
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary Button Blue Glow - Light Theme */
+.mos-btn-blue-hover {
+  transition: all 0.25s ease;
+}
+
+.mos-btn-blue-hover:hover {
+  box-shadow: 0 0 10px 0 rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f5f7;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mac dots header */
+.mac-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+}
+.mac-dot-red { background-color: #ff5f56; }
+.mac-dot-yellow { background-color: #ffbd2e; }
+.mac-dot-green { background-color: #27c93f; }
